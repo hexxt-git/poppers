@@ -47,9 +47,11 @@ function drawCircle( circle){
     }
     if (circle.age > 1000){
         c.strokeStyle = '#181615'
+        c.fillStyle = '#181615'
     }
     c.beginPath()
     c.arc( circle.x, circle.y, circle.r, 0, 8, false)
+//  c.fill()
     c.stroke()
 
 }
@@ -104,6 +106,13 @@ function loop(){
     }
     if ( add & !rdm(1)){
         arr.push(new circle( x, y, random( 10, 30), around(5), around(5)))
+        if (rdm(1) == 1){
+            if (rdm(1) == 1){
+                new Audio('./pop2.mp3').play()
+            } else{
+                new Audio('./pop1.mp3').play()
+            }
+        }
     }
     c.fillStyle = '#AAA'
     c.fillRect( 0, height-1, width-1, height+5)
@@ -113,11 +122,9 @@ function loop(){
 
 window.addEventListener('mousedown',()=>{
     add = true
-    write('down')
 })
 window.addEventListener('mouseup',()=>{
     add = false
-    write('up')
 })
 window.addEventListener('mousemove',(mouse)=>{
     x = mouse.x
